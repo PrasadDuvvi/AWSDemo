@@ -32,15 +32,15 @@ aws ec2 modify-subnet-attribute --subnet-id $subnet_id --map-public-ip-on-launch
 ################################################################################################################
 #Security Group
 aws ec2 create-security-group --group-name MySecurityGroup --description "My security group" --vpc-id $vpc_id
-security_gid=`aws ec2 describe-security-groups --query 'SecurityGroups[?starts_with(Description, `My`) == `true`].GroupId' --output text`
+aws ec2 describe-security-groups --query 'SecurityGroups[?starts_with(Description, `My`) == `true`].GroupId' --output text > /tmp/security_gid.txt
 
-aws ec2 authorize-security-group-ingress --group-id $security_gid --protocol tcp --port 22 --cidr 0.0.0.0/0
-aws ec2 authorize-security-group-ingress --group-id $security_gid --protocol tcp --port 80 --cidr 0.0.0.0/0
-aws ec2 authorize-security-group-ingress --group-id $security_gid --protocol tcp --port 443 --cidr 0.0.0.0/0
+aws ec2 authorize-security-group-ingress --group-id `cat /tmp/security_gid.txt` --protocol tcp --port 22 --cidr 0.0.0.0/0
+aws ec2 authorize-security-group-ingress --group-id `cat /tmp/security_gid.txt` --protocol tcp --port 80 --cidr 0.0.0.0/0
+aws ec2 authorize-security-group-ingress --group-id `cat /tmp/security_gid.txt` --protocol tcp --port 443 --cidr 0.0.0.0/0
 
 ################################################################################################################
 #Launch EC2
 image_id="ami-1e299d7e"
 keyname=`aws ec2 describe-key-pairs --query "KeyPairs[*].KeyName" --output text`
 
-aws ec2 run-instances --image-id $image_id --count 1 --instance-type t2.micro --key-name $keyname --security-group-ids $security_gid --subnet-id $subnet_id
+aws ec2 run-instances --image-id $image_id --count 1 --instance-type t2.micro --key-name $keyname --security-group-ids `cat /tmp/security_gid.txt` --subnet-id $subnet_id
