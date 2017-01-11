@@ -2,8 +2,6 @@
 # Spawn EC2 instance using AWS API
 ~~~~
 Create VPC
-~~~~
-~~~~
 Make Subnect Public
     Create Internet Gateway
     Attach Internet Gateway to VPC
