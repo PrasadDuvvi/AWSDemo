@@ -14,7 +14,9 @@ Create Security Group
 Launch EC2 with KeyPair
 ~~~~
 # Install and configure SSL/TLS on Tomcat
-
+~~~~
+Refer to https://github.com/PrasadDuvvi/tomcat_configure
+~~~~
 # Create a new S3 bucket through AWS API
 ~~~~
 Create a bucket with name validation(Condition Check)
