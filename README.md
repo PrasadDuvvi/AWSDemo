@@ -10,12 +10,11 @@ Make Subnect Public
     Create Custom Route Table
     Create route in Route Table
 ~~~~
+~~~~
 Public IP Mapping
-~~~~
 Create Security Group
-~~~~
 Launch EC2 with KeyPair
-
+~~~~
 # Install and configure SSL/TLS on Tomcat
 
 # Create a new S3 bucket through AWS API
