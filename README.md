@@ -1,11 +1,15 @@
 # AWSDemo
 # Spawn EC2 instance using AWS API
+~~~~
 Create VPC
+~~~~
+~~~~
 Make Subnect Public
-  Create Internet Gateway
-  Attach Internet Gateway to VPC
-  Create Custom Route Table
-  Create route in Route Table
+    Create Internet Gateway
+    Attach Internet Gateway to VPC
+    Create Custom Route Table
+    Create route in Route Table
+~~~~
 Public IP Mapping
 Create Security Group
 Launch EC2 with KeyPair
